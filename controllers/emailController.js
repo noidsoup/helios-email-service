@@ -3,6 +3,7 @@ const sgTransport = require('nodemailer-sendgrid-transport');
 const logger = require('../utils/logger');
 
 const Email = require("../models/email");
+require('../services/cache');
 
 const options = {
   auth: {
@@ -65,19 +66,17 @@ exports.send_email = (req, res, err) => {
 };
 
 // Display list of all emails.
-exports.get_emails = (req, res) => {
-  Email.find().exec((err, emails) => {
-    if (err) {
-      const error = `Error retrieving emails from MongoDB: ${err}`
-      logger.error(error);
-      res.status(500).json({ message: error});
-      throw (error);
-    }
+exports.get_emails = async (req, res) => {
+  console.log(" i ran");
+  const emails = await Email.find().cache()
+  if (!emails) {
+    const error = Error(`Error retrieving emails from MongoDB: ${err}`);
+    logger.error(error);
+    res.status(500).json({ message: error});
+  }
     // Successful, so send data
     logger.info(`Retrieving array of emails with length of ${emails.length}`);
-    res.type("json");
     res.status(200).json({ emails });
-  });
 };
 
 // Get email based on ID.
@@ -89,7 +88,9 @@ exports.get_single_email = (req, res) => {
   const id = req.params.id;
   Email.findOne({
     _id: id
-  }).exec((err, emails) => {
+  })
+  .cache()
+  .exec((err, emails) => {
     if (err) {
       logger.error(err);
       res.status(500).json({ message: err });
@@ -110,7 +111,9 @@ exports.get_user_emails = (req, res) => {
   const userEmail = req.params.email;
   Email.find(
     { to: userEmail },
-  ).exec((err, emails) => {
+  )
+  .cache()
+  .exec((err, emails) => {
     if (err) {
       logger.error(err);
       res.status(500).json({ message: err });
