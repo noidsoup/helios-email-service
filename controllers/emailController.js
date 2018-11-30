@@ -106,14 +106,14 @@ exports.get_user_emails = async (req, res) => {
     res.status(500).json({ message: "No email supplied in request." });
   };
   const userEmail = req.params.email;
-  const emailList = Email.find(
+  const emailList = await Email.find(
     { to: userEmail },
-  ).cache()
+  );
   if (!emailList) {
     const error = Error(`Error retrieving emails from MongoDB.`);
     logger.error(error);
     res.status(500).json({ message: error});
   }
-    logger.info(`Retrieving emails ${emails.length} of the user ${userEmail}`);
-    res.status(200).json({ emailList });
+    logger.info(`Retrieving emails ${emailList.length} of the user ${userEmail}`);
+    res.json(emailList);
 };
