@@ -14,7 +14,7 @@ const emailController = require('../../controllers/emailController');
 * should be used to share information about major changes to the APIs.
 */
 router.get("/", (req, res) => {
-  res.send("Email API");
+  res.status(200).json("Email API");
 });
 
 /* handles all requests comming into /api/v1
