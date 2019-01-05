@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    env_file: env_file_test
+    build:
+      context: "./"
+      dockerfile: DockerFile
+    ports:
+    - "8091:3001"
+    links:
+    - redis
+  redis:
+   image: "redis:alpine"

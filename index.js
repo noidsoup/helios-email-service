@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config({ debug: process.env.DEBUG })
 const config = require("./config");
 const express = require("express");
 const bodyParser = require('body-parser');
@@ -26,5 +26,5 @@ db.on("connected", () => {
 db.on("error", logger.error.bind(logger, "MongoDB connection error;"));
 
 app.use("/api", api);
-
+console.log('using process.env.SERVER_PORT', process.env.SERVER_PORT);
 app.listen(process.env.SERVER_PORT, () => logger.info(`email service listening on port ${process.env.SERVER_PORT}!`))
