@@ -3,5 +3,4 @@ config/default.json
 combined.log
 error.log
 .env
-env_file_test
-data/*
+data
