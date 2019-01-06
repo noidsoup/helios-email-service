@@ -11,6 +11,7 @@
     }
     The hashKey is OPTIONAL and passed in by any funtion calling .cache()
     Example: .cache({ key: req.user._id});
+    
 */
 const config = require("../config");
 const mongoose = require("mongoose");
