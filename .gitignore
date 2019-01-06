@@ -3,3 +3,4 @@ config/default.json
 combined.log
 error.log
 .env
+data
