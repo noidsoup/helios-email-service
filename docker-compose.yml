@@ -13,6 +13,9 @@ services:
     links:
     - redis
     - db
+    depends_on:
+    - redis
+    - db
   redis:
    container_name: redis
    image: "redis:alpine"
