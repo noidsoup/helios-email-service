@@ -1,13 +1,27 @@
 version: '3'
+
 services:
-  web:
-    env_file: env_file_test
+  api:
+    container_name: email-service
+    env_file: .env
     build:
       context: "./"
       dockerfile: DockerFile
+    restart: always
     ports:
-    - "8091:3001"
+    - "8080:3001"
     links:
     - redis
+    - db
   redis:
+   container_name: redis
    image: "redis:alpine"
+  db:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+volumes:
+  mongodata:

@@ -10,10 +10,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const {
-  app: { sendgrid_api_key, server_port },
-} = config.prod;
-
 // set up mongoose connection
 const mongoose = require("mongoose");
 const {
@@ -26,6 +22,7 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false });
 const db = mongoose.connection;
 db.on("connected", () => {
   logger.info(`using ${db.name}`);
+  console.log(`using ${db.name}`);
 });
 db.on("error", logger.error.bind(logger, "MongoDB connection error;"));
 
