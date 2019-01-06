@@ -10,11 +10,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+const {
+  app: { sendgrid_api_key, server_port },
+} = config.prod;
+
 // set up mongoose connection
 const mongoose = require("mongoose");
 const {
   db: { host, port, name },
-} = config.dev;
+} = config.prod;
 
 const mongoDB = process.env.MONGODB_URI || `mongodb://${host}:${port}/${name}`;
 mongoose.Promise = global.Promise;
