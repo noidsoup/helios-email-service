@@ -1,7 +1,10 @@
 sudo: required
-
 services:
   - docker
+
+env:
+  - REDIS_HOST: "redis"
+
 before_install:
   - docker-compose up --build
 
@@ -10,7 +13,6 @@ deploy:
   region: "us-west-1"
   app: "helios-email-service"
   env: "HeliosEmailService-env"
-  REDIS_HOST: "redis"
   bucket_name: "elasticbeanstalk-us-west-1-154847616911"
   bucket_path: "helios-email-service"
   on:
