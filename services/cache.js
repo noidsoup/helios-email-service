@@ -19,12 +19,10 @@ const redis = require("redis");
 const util = require("util");
 // const assert = require('assert');
 
-const {
-  app: { redis_host },
-} = config.prod;
+const redis_host = process.env.REDIS_HOST;
 
-console.log('process.env', process.env);
-const client = redis.createClient({host: process.env.REDIS_HOST});
+console.log('-----------process.env.REDIS_HOST---------------', redis_host);
+const client = redis.createClient({host: redis_host});
 client.hget = util.promisify(client.hget); // Turns the redis get() into a promise.
 
 // Adapting the Moongoose query method to work for our needs.
