@@ -11,7 +11,7 @@
     }
     The hashKey is OPTIONAL and passed in by any funtion calling .cache()
     Example: .cache({ key: req.user._id});
-    
+
 */
 const config = require("../config");
 const mongoose = require("mongoose");
@@ -23,7 +23,7 @@ const {
   app: { redis_host },
 } = config.prod;
 
-console.log('process.env.REDIS_CLIENT_URL', redis_host);
+console.log('process.env.REDIS_HOST', redis_host);
 const client = redis.createClient({host: redis_host});
 client.hget = util.promisify(client.hget); // Turns the redis get() into a promise.
 
