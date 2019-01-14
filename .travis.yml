@@ -3,7 +3,7 @@ services:
   - docker
 
 env:
-  REDIS_HOST: "$REDIS_HOST"
+  - REDIS_HOST: "$REDIS_HOST"
 
 before_install:
   - docker-compose up --build
