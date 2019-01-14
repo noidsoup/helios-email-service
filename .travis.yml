@@ -17,4 +17,6 @@ deploy:
     secure: "$AWS_SECRET_KEY"
 env:
   REDIS_HOST:
-    secure: "$REDIS_HOST"
+    global:
+      - REDIS_HOST:
+          secure: "$REDIS_HOST"
