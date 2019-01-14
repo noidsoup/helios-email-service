@@ -1,11 +1,10 @@
 sudo: required
+
 services:
   - docker
-
 env:
   global:
-    - REDIS_HOST=$REDIS_HOST
-
+    - REDIS_HOST="redis"
 before_install:
   - docker-compose up --build
 
