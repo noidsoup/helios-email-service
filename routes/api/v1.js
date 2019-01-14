@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { check, checkSchema, validationResult } = require("express-validator/check");
+const { cleanCache } = require('../../middlewares/cleanCache');
 
 /* Main routing engine.
 * Takes all requests before forwarding to the approriate controller.
@@ -13,7 +14,7 @@ const emailController = require('../../controllers/emailController');
 * should be used to share information about major changes to the APIs.
 */
 router.get("/", (req, res) => {
-  res.send("Email API");
+  res.status(200).json("Email API");
 });
 
 /* handles all requests comming into /api/v1
@@ -58,7 +59,7 @@ router.post('/v1/emails/', [
     .not().isEmpty().withMessage('body field is empty')
     .trim()
     .escape(),
-], (req, res) => {
+], cleanCache, (req, res) => {
   // Finds the validation errors in this request and wraps them in an object with handy functions
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -73,9 +74,6 @@ router.get('/v1/emails', (req, res) => {
   emailController.get_emails(req, res);
 });
 
-var Schema = {
-
-}
 
 // GET all emails associated with an EMAIL address
 router.get('/v1/emails/:email/messages', [

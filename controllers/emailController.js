@@ -3,6 +3,7 @@ const sgTransport = require('nodemailer-sendgrid-transport');
 const logger = require('../utils/logger');
 
 const Email = require("../models/email");
+require('../services/cache');
 
 const options = {
   auth: {
@@ -65,60 +66,55 @@ exports.send_email = (req, res, err) => {
 };
 
 // Display list of all emails.
-exports.get_emails = (req, res) => {
-  Email.find().exec((err, emails) => {
-    if (err) {
-      const error = `Error retrieving emails from MongoDB: ${err}`
-      logger.error(error);
-      res.status(500).json({ message: error});
-      throw (error);
-    }
+exports.get_emails = async (req, res) => {
+  console.log(" i ran");
+  const emails = await Email.find().cache()
+  if (!emails) {
+    const error = Error(`Error retrieving emails from MongoDB.`);
+    logger.error(error);
+    res.status(500).json({ message: error});
+  }
     // Successful, so send data
     logger.info(`Retrieving array of emails with length of ${emails.length}`);
-    res.type("json");
     res.status(200).json({ emails });
-  });
 };
 
-// Get email based on ID.
-exports.get_single_email = (req, res) => {
+// Get email Details based on ID.
+exports.get_single_email = async (req, res) => {
   if (!req.params.id) {
-    const error = "No ID supplied in request";
+    const error = Error("No ID supplied in request");
     res.status(500).json({ message: error });
   };
   const id = req.params.id;
-  Email.findOne({
+  const emailDetail = await Email.findOne({
     _id: id
-  }).exec((err, emails) => {
-    if (err) {
-      logger.error(err);
-      res.status(500).json({ message: err });
-      throw (err);
-    }
+  }).cache();
+  if (!emailDetail) {
+    const error = Error(`Error retrieving emails from MongoDB.`);
+    logger.error(error);
+    res.status(500).json({ message: error});
+  }
     // Successful, so send data
     logger.info(`Retrieving email with ID of ${id}`);
-    res.type("json");
-    res.status(200).json({ emails });
-  });
+    res.status(200).json({ emailDetail });
+
 };
 
 // Handle request for EMAILS by a given email address
-exports.get_user_emails = (req, res) => {
+exports.get_user_emails = async (req, res) => {
   if (!req.params.email) {
-    res.status(500).json({ message: "No email supplied in request" });
+    res.status(500).json({ message: "No email supplied in request." });
   };
-  const emailAddress = req.params.email;
-  Email.find({
-    $and : [{ $or : [ { to : emailAddress }, { from : emailAddress } ] }]
-  }).exec((err, emails) => {
-    if (err) {
-      logger.error(err);
-      res.status(500).json({ message: err });
-      throw (err);
-    }
-    logger.info(`Retrieving emails ${emails.length} of the user ${emailAddress}`);
-    res.type("json");
-    res.status(200).json({ emails });
-  });
+  const userEmail = req.params.email;
+  const emailList = await Email.find(
+    { to: userEmail },
+  );
+  if (!emailList) {
+    const error = Error(`Error retrieving emails from MongoDB.`);
+    logger.error(error);
+    res.status(500).json({ message: error});
+  }
+    logger.info(`Retrieving emails ${emailList.length} of the user ${userEmail}`);
+    res.json(emailList);
 };
 

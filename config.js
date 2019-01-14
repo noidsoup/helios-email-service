@@ -4,18 +4,21 @@ require("dotenv").config(); // loads evnironment variables defined in .env
 const dev = {
   app: {
     sendgrid_api_key: process.env.SENDGRID_API_KEY,
-    port: parseInt(process.env.DEV_APP_PORT) || 3000,
+    port: parseInt(process.env.SERVER_PORT) || 3001,
+    redis_host: 'localhost'
   },
   db: {
-    host: process.env.DEV_DB_HOST || "localhost",
-    port: parseInt(process.env.DEV_DB_PORT) || 27017,
-    name: process.env.DEV_DB_NAME || "localEmailDB",
+    uri: process.env.DEV_MONGODB_URI,
+    host: "localhost",
+    port: parseInt(process.env.DB_PORT) || 27017,
+    name: "localEmailDB",
   },
 };
 
 // / STAGING ///
 const staging = {
   db: {
+    uri: process.env.MONGODB_URI,
     host: process.env.STAGING_DB_HOST || "localhost",
     port: parseInt(process.env.STAGING_DB_PORT) || 27017,
     name: process.env.STAGING_DB_NAME || "statgingDB",
@@ -24,10 +27,16 @@ const staging = {
 
 // / PRODUCTION ///
 const prod = {
+  app: {
+    sendgrid_api_key: process.env.SENDGRID_API_KEY,
+    server_port: parseInt(process.env.SERVER_PORT),
+    redis_host: process.env.REDIS_HOST,
+  },
   db: {
-    host: process.env.PROD_DB_HOST || "localhost",
-    port: parseInt(process.env.PROD_DB_PORT) || 27017,
-    name: process.env.PROD_DB_NAME || "productionDB",
+    uri: process.env.MONGODB_URI,
+    host: process.env.DB_HOST,
+    port: parseInt(process.env.DB_PORT) || 27017,
+    name: process.env.DB_NAME,
   },
 };
 

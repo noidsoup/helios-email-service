@@ -3,3 +3,5 @@ config/default.json
 combined.log
 error.log
 .env
+docker-compose.yml
+data

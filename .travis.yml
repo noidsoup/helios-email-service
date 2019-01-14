@@ -1,0 +1,7 @@
+sudo: required
+services:
+  - docker
+
+before_install
+ - docker build -f -t neymann/helios-email-service Dockerfile .
+ - docker run neymann/helios-email-service npm run start

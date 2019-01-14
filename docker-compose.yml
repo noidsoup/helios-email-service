@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  api:
+    container_name: email-service
+    build:
+      context: "./"
+      dockerfile: DockerFile
+    restart: always
+    ports:
+    - "8080:3001"
+    links:
+    - redis
+    - db
+    depends_on:
+    - redis
+    - db
+  redis:
+   container_name: redis
+   image: "redis:alpine"
+  db:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+    ports:
+      - "27017:27017"
+volumes:
+  mongodata:
