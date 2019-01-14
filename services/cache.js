@@ -23,7 +23,7 @@ const {
   app: { redis_host },
 } = config.prod;
 
-console.log('process.env.REDIS_HOST', process.env.REDIS_HOST);
+console.log('process.env', process.env);
 const client = redis.createClient({host: process.env.REDIS_HOST});
 client.hget = util.promisify(client.hget); // Turns the redis get() into a promise.
 
