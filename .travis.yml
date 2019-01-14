@@ -16,6 +16,5 @@ deploy:
   secret_access_key:
     secure: "$AWS_SECRET_KEY"
 env:
-  REDIS_HOST: $REDIS_HOST
-  global:
-    secure: J4+C1nrjtEPvXKU/d7/7qXbqlcmCO7dIq42U1SUkymuxR74sJ9ZD1BJ+Y3ECcy7eKHcV8i2B3rScUsnOwavqGz8YFqyE8PHvnKd1NKk6pCh9QNGCXwtjEQShbB2CWNsgk9OiHPIVxC+9qKosG5QEqMhvX3ak4rdVu/FV+v9s0qRYNIe+VyJsa+FclIaiquNJFBlEJk5CxdgSesoyjAVcjDco/XquyNfEr4Ax0HPLxnlOODYldG11cJz6udKKDDIT2Gwzv3s7cNXbigX/CcIGT6T7zmhegG5/C8eYSUlOj/ZgXYkYssuqEwbJ8zqT2IgLmaXg5gLHF59oO0Iav2RsdySqFo5iro/ZQqgyFg1CUAifzruLdNcC/d3/bhBkQEEB0i3x5b8pRJEszz4AzttgMMTrvCJCPZneoZakvL0gb2Y013L8higDSlljMTCD2MzlOL9LLQfkmz4JGQbKel6Q6jfO9B0KlQi2q8NIEoSJRWHDx+6CkbVqrwugusww90OGOuFTQ3gu+Lu2L6SC+1ZkvBVZcJE5yWZTeiKjavPyupW15L/Az6FEV97vjnTfnPFPvoKzdB5scp3IwRrQ7jNuegsPbxpIxQy4Px3oTlwdFYJvbIohN8QTCn20Elg6fc8YUZe2b3O1pgrIi02Bf7L7IT0dWaDzVaipPSGHClxsDCM=
+  REDIS_HOST:
+    secure: "$REDIS_HOST"
