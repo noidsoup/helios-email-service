@@ -8,7 +8,7 @@ services:
       SERVER_PORT: $SERVER_PORT
     build:
       context: "./"
-      dockerfile: DockerFile
+      dockerfile: Dockerfile
     restart: always
     ports:
     - "8080:3001"
