@@ -3,6 +3,9 @@ version: '3'
 services:
   api:
     container_name: email-service
+    environment:
+      REDIS_HOST: "redis"
+      SERVER_PORT: 3001
     build:
       context: "./"
       dockerfile: DockerFile
