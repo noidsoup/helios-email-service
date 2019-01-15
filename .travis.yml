@@ -6,7 +6,9 @@ services:
 - docker
 
 before_install:
-  - docker-compose up --build -d
+  - export REDIS_HOST=$REDIS_HOST
+  - export SERVER_PORT=$SERVER_PORT
+  - docker-compose up -d
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
