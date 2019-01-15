@@ -1,8 +1,6 @@
 sudo: required
 services:
 - docker
-before_install:
-- docker-compose up --build
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
@@ -15,3 +13,6 @@ deploy:
   access_key_id: "$AWS_ACCESS_KEY"
   secret_access_key:
     secure: "$AWS_SECRET_KEY"
+
+after_deploy:
+  - echo "done deploying"
