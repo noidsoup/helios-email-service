@@ -21,8 +21,8 @@ const util = require("util");
 
 const redis_host = process.env.REDIS_HOST;
 
-console.log('-----------process.env.REDIS_HOST---------------', "$REDIS_HOST");
-const client = redis.createClient({host: "$REDIS_HOST"});
+console.log('-----------process.env.REDIS_HOST---------------', redis_host, "$REDIS_HOST");
+const client = redis.createClient({host: redis_host});
 client.hget = util.promisify(client.hget); // Turns the redis get() into a promise.
 
 // Adapting the Moongoose query method to work for our needs.
