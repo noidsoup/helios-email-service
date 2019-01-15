@@ -7,7 +7,7 @@ services:
 
 before_install:
   - docker-compose pull
-  - docker-compose up -d
+  - docker-compose up --build
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
