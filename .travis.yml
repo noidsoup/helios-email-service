@@ -13,6 +13,7 @@ deploy:
   region: us-west-1
   app: "helios-email-service"
   zip-file: wat.zip
+  skip_cleanup: true,
   env: "HeliosEmailService-env"
   bucket_name: "elasticbeanstalk-us-west-1-154847616911"
   bucket_path: "helios-email-service"
