@@ -35,7 +35,7 @@ const prod = {
   db: {
     uri: process.env.MONGODB_URI,
     host: process.env.DB_HOST,
-    port: parseInt(process.env.DB_PORT) || 27017,
+    port: parseInt(process.env.DB_PORT),
     name: process.env.DB_NAME,
   },
 };

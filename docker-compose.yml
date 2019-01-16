@@ -1,11 +1,22 @@
 version: '3'
 
 services:
+  redis:
+   container_name: redis
+   image: "redis:alpine"
+  db:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - mongodata:/data/db
+      - /usr/src/app/node_modules
+    ports:
+      - "27017:27017"
   api:
     container_name: email-service
     environment:
-      REDIS_HOST: $REDIS_HOST
-      SERVER_PORT: $SERVER_PORT
+      - REDIS_HOST=$REDIS_HOST
+      - SERVER_PORT=$SERVER_PORT
     build:
       context: "./"
       dockerfile: Dockerfile
@@ -18,15 +29,5 @@ services:
     depends_on:
     - redis
     - db
-  redis:
-   container_name: redis
-   image: "redis:alpine"
-  db:
-    container_name: mongo
-    image: mongo
-    volumes:
-      - mongodata:/data/db
-    ports:
-      - "27017:27017"
 volumes:
   mongodata:
