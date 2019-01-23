@@ -4,7 +4,8 @@
     {
       "name": "helios-email-service",
       "image": "neymann/helios-email-service:1",
-      "hostname" : "helios-email-service"
+      "hostname" : "helios-email-service",
+      "essential" : true
     }
   ]
 }
