@@ -3,7 +3,8 @@
   "containerDefinitions" : [
     {
       "name": "helios-email-service",
-      "image": "neymann/helios-email-service"
+      "image": "neymann/helios-email-service:1",
+      "hostname" : "helios-email-service"
     }
   ]
 }
