@@ -6,9 +6,9 @@ services:
 - docker
 
 before_install:
-  - REDIS_HOST=$REDIS_HOST SERVER_PORT=$SERVER_PORT docker-compose up -d
+  - docker-compose up -build
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push
+  - docker push 
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
