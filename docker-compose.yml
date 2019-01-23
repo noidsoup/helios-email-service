@@ -2,7 +2,7 @@ version: '3'
 
 services:
   api:
-    container_name: email-service
+    image: neymann/helios-email-service
     environment:
       REDIS_HOST: $REDIS_HOST
       SERVER_PORT: $SERVER_PORT
