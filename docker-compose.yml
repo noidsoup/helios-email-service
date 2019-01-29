@@ -6,27 +6,11 @@ services:
     environment:
       REDIS_HOST: $REDIS_HOST
       SERVER_PORT: $SERVER_PORT
+      MONGODB_URI: $MONGODB_URI
+      REDIS_CLIENT_URL: $REDIS_CLIENT_URL
     build:
       context: "./"
       dockerfile: Dockerfile
     restart: always
     ports:
     - "8080:3001"
-    links:
-    - redis
-    - db
-    depends_on:
-    - redis
-    - db
-  redis:
-   container_name: redis
-   image: "redis:alpine"
-  db:
-    container_name: mongo
-    image: mongo
-    volumes:
-      - mongodata:/data/db
-    ports:
-      - "27017:27017"
-volumes:
-  mongodata:

@@ -19,7 +19,7 @@ const redis = require("redis");
 const util = require("util");
 // const assert = require('assert');
 
-const redis_host = process.env.REDIS_HOST;
+const redis_host = process.env.REDIS_HOST || 'localhost';
 
 console.log('-----------process.env.REDIS_HOST---------------', redis_host);
 const client = redis.createClient({host: redis_host});

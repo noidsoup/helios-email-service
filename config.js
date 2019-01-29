@@ -30,10 +30,10 @@ const prod = {
   app: {
     sendgrid_api_key: process.env.SENDGRID_API_KEY,
     server_port: parseInt(process.env.SERVER_PORT),
-    redis_host: process.env.REDIS_HOST || 'localhost',
+    redis_host: process.env.REDIS_HOST,
   },
   db: {
-    uri: 'mongodb://email-serice-user:e-3~8^L2aSaP/n4$@pegasus-email-service-shard-00-00-cwloz.mongodb.net:27017,pegasus-email-service-shard-00-01-cwloz.mongodb.net:27017,pegasus-email-service-shard-00-02-cwloz.mongodb.net:27017/test?ssl=true&replicaSet=pegasus-email-service-shard-0&authSource=admin&retryWrites=true',
+    uri: process.env.MONGODB_URI,
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT) || 27017,
     name: process.env.DB_NAME,
