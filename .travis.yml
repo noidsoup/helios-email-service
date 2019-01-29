@@ -8,7 +8,7 @@ services:
 before_install:
   - docker-compose up -d --build
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push neymann/helios-email-service:1
+  - docker push neymann/helios-email-service
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
