@@ -3,7 +3,7 @@
   "containerDefinitions" : [
     {
       "name": "helios-email-service",
-      "image": "neymann/helios-email-service:1",
+      "image": "neymann/helios-email-service",
       "hostname" : "helios-email-service",
       "essential" : true,
       "memory" : 128,
