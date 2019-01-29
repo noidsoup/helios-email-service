@@ -13,11 +13,19 @@
     Example: .cache({ key: req.user._id});
 
 */
+<<<<<<< HEAD
+=======
+require('dotenv').config()
+>>>>>>> f87a2953b9ae8e3ab101c5ed7dac521cece40ce8
 const mongoose = require("mongoose");
 const redis = require("redis");
 const util = require("util");
 
+<<<<<<< HEAD
 const redisUrl = process.env.REDIS_CLIENT_URL;
+=======
+const redis_host = process.env.REDIS_HOST || 'localhost';
+>>>>>>> f87a2953b9ae8e3ab101c5ed7dac521cece40ce8
 
 console.log('-----------process.env.REDIS_HOST---------------', redisUrl);
 const client = redis.createClient({ host: redisUrl });

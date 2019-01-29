@@ -6,10 +6,9 @@ services:
 - docker
 
 before_install:
-  - export REDIS_HOST=$REDIS_HOST
-  - export SERVER_PORT=$SERVER_PORT
-  - export SERVER_PORT=$REDIS_CLIENT_URL
-  - docker-compose up -d
+  - docker-compose up -d --build
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push neymann/helios-email-service:1
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
