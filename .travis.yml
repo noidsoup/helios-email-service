@@ -6,13 +6,16 @@ services:
 - docker
 
 before_install:
-  - REDIS_HOST=$REDIS_HOST SERVER_PORT=$SERVER_PORT docker-compose up -d
+  - export REDIS_HOST=$REDIS_HOST
+  - export SERVER_PORT=$SERVER_PORT
+  - export SERVER_PORT=$REDIS_CLIENT_URL
+  - docker-compose up -d
 deploy:
   provider: elasticbeanstalk
   region: us-west-1
-  app: "helios-email-service"
+  app: "helios-email"
   skip_cleanup: true
-  env: "HeliosEmailService-env"
+  env: "HeliosEmail-env"
   bucket_name: "elasticbeanstalk-us-west-1-154847616911"
   bucket_path: "helios-email-service"
   on:

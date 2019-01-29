@@ -13,16 +13,14 @@
     Example: .cache({ key: req.user._id});
 
 */
-const config = require("../config");
 const mongoose = require("mongoose");
 const redis = require("redis");
 const util = require("util");
-// const assert = require('assert');
 
-const redis_host = process.env.REDIS_HOST;
+const redisUrl = process.env.REDIS_CLIENT_URL;
 
-console.log('-----------process.env.REDIS_HOST---------------', redis_host);
-const client = redis.createClient({host: redis_host});
+console.log('-----------process.env.REDIS_HOST---------------', redisUrl);
+const client = redis.createClient({ host: redisUrl });
 client.hget = util.promisify(client.hget); // Turns the redis get() into a promise.
 
 // Adapting the Moongoose query method to work for our needs.
