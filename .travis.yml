@@ -6,6 +6,7 @@ services:
 - docker
 
 before_install:
+  - export "$MONGODB_URI"
   - docker-compose up -d --build
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push neymann/helios-email-service
