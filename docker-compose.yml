@@ -1,44 +1,16 @@
 version: '3'
 
 services:
-  redis:
-   container_name: redis
-   image: "redis:alpine"
-  db:
-    container_name: mongo
-    image: mongo
-    volumes:
-      - mongodata:/data/db
-      - /usr/src/app/node_modules
-    ports:
-      - "27017:27017"
   api:
     image: neymann/helios-email-service
     environment:
-<<<<<<< HEAD
-      - REDIS_HOST=$REDIS_HOST
-      - SERVER_PORT=$SERVER_PORT
-=======
       REDIS_HOST: $REDIS_HOST
       SERVER_PORT: $SERVER_PORT
       MONGODB_URI: $MONGODB_URI
       REDIS_CLIENT_URL: $REDIS_CLIENT_URL
->>>>>>> ab2311222e7f356f1b4a68ceecf01edb94efc5e9
     build:
       context: "./"
       dockerfile: Dockerfile
     restart: always
     ports:
-<<<<<<< HEAD
     - "8080:3001"
-    links:
-    - redis
-    - db
-    depends_on:
-    - redis
-    - db
-volumes:
-  mongodata:
-=======
-    - "8080:3001"
->>>>>>> ab2311222e7f356f1b4a68ceecf01edb94efc5e9
