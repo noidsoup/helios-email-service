@@ -1,0 +1,18 @@
+{
+  "AWSEBDockerrunVersion" : 2,
+  "containerDefinitions" : [
+    {
+      "name": "helios-email-service",
+      "image": "neymann/helios-email-service",
+      "hostname" : "helios-email-service",
+      "essential" : true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 8080,
+          "containerPort": 3001
+        }
+      ]
+    }
+  ]
+}
