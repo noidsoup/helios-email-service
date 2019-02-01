@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.status(200).json("Email API");
 });
-//const api = require("./routes/api/v1");
+const api = require("./routes/api/v1");
 
 const app = express();
 app.use(bodyParser.json());
@@ -30,6 +30,6 @@ db.on("connected", () => {
 db.on("error", logger.error.bind(logger, "MongoDB connection error;"));
 
 app.use(router);
-//app.use("/api", api);
+app.use("/api", api);
 console.log('using process.env.SERVER_PORT', process.env.SERVER_PORT);
 app.listen(process.env.SERVER_PORT, () => logger.info(`email service listening on port ${process.env.SERVER_PORT}!`))
