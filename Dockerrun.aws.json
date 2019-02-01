@@ -1,5 +1,5 @@
 {
-  "AWSEBDockerrunVersion": "1",
+  "AWSEBDockerrunVersion": "2",
   "essential" : true,
   "name": "helios-email-service",
   "hostname" : "helios-email-service",
