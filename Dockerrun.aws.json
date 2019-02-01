@@ -1,5 +1,5 @@
 {
-  "AWSEBDockerrunVersion" : 1,
+  "AWSEBDockerrunVersion" : 2,
   "containerDefinitions" : [
     {
       "name": "helios-email-service",
@@ -9,7 +9,7 @@
       "memory": 128,
       "Ports": [
         {
-          "ContainerPort": "3000"
+          "ContainerPort": "3001"
         }
       ]
     }
