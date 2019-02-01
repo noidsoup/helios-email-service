@@ -7,10 +7,10 @@
       "hostname" : "helios-email-service",
       "essential" : true,
       "memory": 128,
-      "portMappings": [
+      "Ports": [
         {
-          "hostPort": 80,
-          "containerPort": 3001
+          "ContainerPort": 3001,
+          "HostPort": 8000
         }
       ]
     }
