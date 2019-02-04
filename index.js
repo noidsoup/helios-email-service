@@ -25,11 +25,11 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false });
 const db = mongoose.connection;
 db.on("connected", () => {
   logger.info(`using ${db.name}`);
-  console.log(`using ${db.name}`);
+  console.log(`using=------------------------- ${db.name}`);
 });
-db.on("error", logger.error.bind(logger, "MongoDB connection error;"));
+db.on("error", console.error("MongoDB connection error;"));
 
 app.use(router);
 app.use("/api", api);
-console.log('using process.env.SERVER_PORT', process.env.SERVER_PORT);
+console.log('SERVER_PORT', process.env.SERVER_PORT, 'mongoDB', process.env.MONGODB_URI);
 app.listen(process.env.SERVER_PORT, () => logger.info(`email service listening on port ${process.env.SERVER_PORT}!`))
