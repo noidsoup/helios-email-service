@@ -27,7 +27,7 @@ db.on("connected", () => {
   logger.info(`using ${db.name}`);
   console.log(`using=------------------------- ${db.name}`);
 });
-db.on("error", console.error("MongoDB connection error;"));
+db.on("error", logger.error.bind(logger, "MongoDB connection error;"));
 
 app.use(router);
 app.use("/api", api);
