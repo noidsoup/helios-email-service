@@ -67,15 +67,16 @@ exports.send_email = (req, res, err) => {
 
 // Display list of all emails.
 exports.get_emails = async (req, res) => {
-  console.log(" i ran");
   const emails = await Email.find().cache()
   if (!emails) {
     const error = Error(`Error retrieving emails from MongoDB.`);
     logger.error(error);
+    console.log(error);
     res.status(500).json({ message: error});
   }
     // Successful, so send data
     logger.info(`Retrieving array of emails with length of ${emails.length}`);
+    console.log(emails);
     res.status(200).json({ emails });
 };
 

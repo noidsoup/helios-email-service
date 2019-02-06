@@ -36,7 +36,7 @@ const prod = {
     uri: process.env.MONGODB_URI,
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT),
-    name: process.env.DB_NAME,
+    name: 'emailDB',
   },
 };
 

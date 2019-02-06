@@ -48,8 +48,7 @@ mongoose.Query.prototype.exec = async function(...args) {
   const redisKey = JSON.stringify({ ...{}, query, collection }); // Combines query and collection to form a unique key.
   // Check to see if the exact query has been executed in redis.
   const cacheValue = await client.hget(this.hashKey, redisKey);
-  console.log(redisKey)
-
+  
   // if yes, convert the cache value to json, then mogoose object, and return the result right away.
   if (cacheValue) {
     const doc = JSON.parse(cacheValue);
