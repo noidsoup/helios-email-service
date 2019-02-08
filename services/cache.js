@@ -13,7 +13,7 @@
     Example: .cache({ key: req.user._id});
 
 */
-require('dotenv').config({ path: './tmp/.env' })
+require('dotenv').config()
 const mongoose = require("mongoose");
 const redis = require("redis");
 const util = require("util");
