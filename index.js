@@ -21,15 +21,18 @@ const {
 
 const mongoDB = process.env.MONGODB_URI || `mongodb://${host}:${port}/${name}`;
 mongoose.Promise = global.Promise;
-mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false });
+mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false }, function(err) {
+    if (err)
+    console.log('-------------------', err);
+});
+
 const db = mongoose.connection;
 db.on("connected", () => {
   logger.info(`using ${db.name}`);
-  console.log(`using ${db.name}`);
+  console.log(`using=------------------------- ${db.name}`);
 });
-db.on("error", logger.error.bind(logger, "MongoDB connection error;"));
 
 app.use(router);
 app.use("/api", api);
-console.log('using process.env.SERVER_PORT', process.env.SERVER_PORT);
+console.log('SERVER_PORT', process.env.SERVER_PORT);
 app.listen(process.env.SERVER_PORT, () => logger.info(`email service listening on port ${process.env.SERVER_PORT}!`))
