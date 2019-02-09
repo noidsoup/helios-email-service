@@ -33,7 +33,6 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false }, fu
 const db = mongoose.connection;
 db.on("connected", () => {
   logger.info(`using ${db.name}`);
-  console.log(`using=------------------------- ${db.name}`);
 });
 
 
