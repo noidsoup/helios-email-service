@@ -1,5 +1,5 @@
 //require('dotenv').config();
-require('dotenv').config({ path: './tmp/.env', debug: true })
+require('dotenv').config();
 const config = require("./config");
 const express = require("express");
 const bodyParser = require('body-parser');
