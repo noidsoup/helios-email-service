@@ -1,10 +1,11 @@
 //require('dotenv').config();
-require('dotenv').config({ path: './tmp/.env' })
+require('dotenv').config({ path: './tmp/.env', debug: true })
 const config = require("./config");
 const express = require("express");
 const bodyParser = require('body-parser');
 const logger = require('./utils/logger');
 const router = express.Router();
+
 router.get("/", (req, res) => {
   res.status(200).json("Email API");
 });
@@ -20,6 +21,8 @@ const {
   db: { host, port, name },
 } = config.prod;
 
+console.log();
+
 const mongoDB = process.env.MONGODB_URI || `mongodb://${host}:${port}/${name}`;
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false }, function(err) {
@@ -32,6 +35,14 @@ db.on("connected", () => {
   logger.info(`using ${db.name}`);
   console.log(`using=------------------------- ${db.name}`);
 });
+
+
+const testFolder = './';
+const fs = require('fs');
+
+fs.readdirSync(testFolder).forEach(file => {
+  console.log(file);
+})
 
 app.use(router);
 app.use("/api", api);
