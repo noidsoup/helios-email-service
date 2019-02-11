@@ -22,7 +22,7 @@ const redis_host = process.env.REDIS_CLIENT_URL || 'localhost';
 
 console.log('-----------process.env.REDIS_CLIENT_URL---------------', redis_host);
 
-const testFolder = '../';
+const testFolder = '../../';
 const fs = require('fs');
 
 fs.readdirSync(testFolder).forEach(file => {
