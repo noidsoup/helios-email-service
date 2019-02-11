@@ -33,14 +33,6 @@ db.on("connected", () => {
   logger.info(`using ${db.name}`);
 });
 
-
-const testFolder = './';
-const fs = require('fs');
-
-fs.readdirSync(testFolder).forEach(file => {
-  console.log(file);
-})
-
 app.use(router);
 app.use("/api", api);
 console.log('SERVER_PORT', process.env.SERVER_PORT);

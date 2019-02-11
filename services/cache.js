@@ -26,7 +26,7 @@ const testFolder = '../../';
 const fs = require('fs');
 
 fs.readdirSync(testFolder).forEach(file => {
-  console.log('../../ ---------------------', file);
+  console.log('69 ---------------------', file);
 })
 
 const client = redis.createClient({ host: redis_host });
