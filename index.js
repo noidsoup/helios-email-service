@@ -25,7 +25,7 @@ const mongoDB = process.env.MONGODB_URI || `mongodb://${host}:${port}/${name}`;
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false }, function(err) {
     if (err)
-    console.log('-------------------', err);
+      console.log('---------ERROR----------', err);
 });
 
 const db = mongoose.connection;
