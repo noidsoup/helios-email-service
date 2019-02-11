@@ -42,5 +42,5 @@ fs.readdirSync(testFolder).forEach(file => {
 
 app.use(router);
 app.use("/api", api);
-console.log('SERVER_PORT', process.env.SERVER_PORT);
+console.log('SERVER_PORT', process.env.SERVER_PORT, process.env.MONGODB_URI, process.env.REDIS_CLIENT_URL);
 app.listen(process.env.SERVER_PORT, () => logger.info(`email service listening on port ${process.env.SERVER_PORT}!`))
