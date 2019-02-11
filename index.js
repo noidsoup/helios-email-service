@@ -37,7 +37,7 @@ const testFolder = './';
 const fs = require('fs');
 
 fs.readdirSync(testFolder).forEach(file => {
-  console.log('9 ---------------------', file);
+  console.log('10 ---------------------', file);
 })
 
 app.use(router);
