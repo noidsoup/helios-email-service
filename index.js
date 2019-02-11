@@ -37,10 +37,10 @@ const testFolder = './';
 const fs = require('fs');
 
 fs.readdirSync(testFolder).forEach(file => {
-  console.log('12 ---------------------', file);
+  console.log('13 ---------------------', file);
 })
 
 app.use(router);
 app.use("/api", api);
-console.log('SERVER_PORTTTTTTT', process.env.SERVER_PORT, process.env.MONGODB_URI, process.env.REDIS_CLIENT_URL);
+console.log('SERVER_PORT', process.env.SERVER_PORT);
 app.listen(process.env.SERVER_PORT, () => logger.info(`email service listening on port ${process.env.SERVER_PORT}!`))
