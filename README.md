@@ -1,1 +1,0 @@
-Copy the `production.json` file to a `default.json` file in /config folder and populate it with our sendgrid api key.
