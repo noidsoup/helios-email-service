@@ -1,5 +1,6 @@
 //require('dotenv').config();
 require('dotenv').config();
+const jwt = require('jsonwebtoken');
 const config = require("./config");
 const express = require("express");
 const bodyParser = require('body-parser');
@@ -37,7 +38,7 @@ const testFolder = './';
 const fs = require('fs');
 
 fs.readdirSync(testFolder).forEach(file => {
-  console.log('15 ---------------------', file);
+  console.log('16 ---------------------', file);
 })
 const fileName = '.env';
 fs.readFile(fileName, 'utf8', function (err,data) {
