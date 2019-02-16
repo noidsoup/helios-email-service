@@ -37,8 +37,15 @@ const testFolder = './';
 const fs = require('fs');
 
 fs.readdirSync(testFolder).forEach(file => {
-  console.log('13 ---------------------', file);
+  console.log('15 ---------------------', file);
 })
+const fileName = '.env';
+fs.readFile(fileName, 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  console.log(data);
+});
 
 app.use(router);
 app.use("/api", api);
