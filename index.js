@@ -64,14 +64,8 @@ db.on("connected", () => {
   logger.info(`using ${db.name}`);
 });
 
-const testFolder = './';
-const fs = require('fs');
-
-fs.readdirSync(testFolder).forEach(file => {
-  console.log('3 ---------------------', file);
-})
-
 app.use(router);
+// protect routes
 app.use("/api", jwtVerify, api);
 logger.info('SERVER_PORT', process.env.SERVER_PORT);
 app.listen(process.env.SERVER_PORT, () => logger.info(`email service listening on port ${process.env.SERVER_PORT}!`))
