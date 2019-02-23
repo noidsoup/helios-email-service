@@ -20,7 +20,7 @@ function jwtVerify (req, res, next) {
 
     // decode token
     if (token) {
-  
+
       // verifies secret and checks exp
       jwt.verify(token, process.env.SECRET, function(err, decoded) {
         if (err) {
@@ -31,13 +31,13 @@ function jwtVerify (req, res, next) {
           next();
         }
       });
-  
+
     } else {
       // if there is no token
       // return an error
-    return res.status(403).send({ 
-        success: false, 
-        message: 'No token provided.' 
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
     });
   }
 }
