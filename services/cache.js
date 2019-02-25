@@ -17,8 +17,6 @@ const redis = require("redis");
 const util = require("util");
 const redis_host = process.env.REDIS_CLIENT_URL || 'localhost';
 
-console.log('-----------process.env.REDIS_CLIENT_URL-------s--------', redis_host);
-
 const client = redis.createClient({ host: redis_host });
 client.hget = util.promisify(client.hget); // Turns the redis get() into a promise.
 

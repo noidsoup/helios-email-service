@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 const api = require("./routes/api/v1");
 
 function jwtVerify (req, res, next) {
-  console.log('verifying token...')
+    logger.info('verifying token...');
 
     // check header or url parameters or post parameters for token
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -28,6 +28,7 @@ function jwtVerify (req, res, next) {
         } else {
           // if everything is good, save to request for use in other routes
           req.decoded = decoded;
+          logger.info('Token verified');
           next();
         }
       });
@@ -64,7 +65,7 @@ db.on("connected", () => {
   logger.info(`using ${db.name}`);
 });
 
-console.log('fdsfsdfsdfsdfsdfsdfsdfs----', process.env.SERVER_PORT);
+console.log('23422----');
 
 app.use(router);
 // protect routes
