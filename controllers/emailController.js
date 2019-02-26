@@ -2,6 +2,9 @@ const nodemailer = require('nodemailer');
 const EmailTemplates = require('swig-email-templates');
 const sgTransport = require('nodemailer-sendgrid-transport');
 const logger = require('../utils/logger');
+const ent = require('ent');
+const encode = require('ent/encode');
+const decode = require('ent/decode');
 
 const Email = require("../models/email");
 require('../services/cache');
@@ -64,9 +67,9 @@ exports.send_email = (req, res, err) => {
     logger.info(msg);
     res.status(200).json({ message: msg });
   }); */
-
+  console.log(ent.decode(body));
   var context = {
-    magic_link: body,
+    magic_link: ent.decode(body),
   };
 
   templates.render('email_template.html', context, function(template_err, html) {
@@ -99,7 +102,7 @@ exports.send_email = (req, res, err) => {
       logger.info(msg);
       res.status(200).json({ message: msg });
     });
-   
+
   });
 };
 
