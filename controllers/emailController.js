@@ -27,7 +27,6 @@ exports.send_email = (req, res, err) => {
     from,
     subject,
     body,
-    html: `<h1>${body}</h1>`,
     sent: false,
   };
 
@@ -67,7 +66,7 @@ exports.send_email = (req, res, err) => {
   }); */
 
   var context = {
-    meatballCount: 9001
+    magic_link: body,
   };
 
   templates.render('email_template.html', context, function(template_err, html) {
@@ -77,6 +76,7 @@ exports.send_email = (req, res, err) => {
     }
     // add html to email object
     email.html = html;
+    console.log(html);
     // Send email
     mailer.sendMail(email, (mailer_err, sendGridRes) => {
       if (mailer_err || !sendGridRes || sendGridRes.message !== 'success') {
