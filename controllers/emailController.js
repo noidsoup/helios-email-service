@@ -46,28 +46,7 @@ exports.send_email = (req, res, err) => {
     logger.info('saved to mongoDB', id);
   });
 
-/*   mailer.sendMail(email, (err, sendGridRes) => {
-    if (err || sendGridRes.message !== 'success') {
-      const error = `An error has occurred while attempting to send email. The response from Sendgrid is: ${sendGridRes.message}, and the error object is ${err}`;
-      logger.error(error);
-      res.status(500).json({ message: error});
-      throw(err || sendGridRes);
-    }
-    // Update previously saved email to reflect succesful send
-    Email.findOneAndUpdate({_id: id}, { sent: true }, ((err, res) => {
-      if (err) {
-        const error = `Error saving email to MongoDB: ${err}`
-        logger.error(error);
-        res.status(500).json({ message: error});
-        throw (error);
-      }
-      logger.info(`Saved email with ID: ${id}`)
-    }))
-    const msg = `Successfully sent email to ${email.to}. Sendgrid responded with: ${sendGridRes.message}`;
-    logger.info(msg);
-    res.status(200).json({ message: msg });
-  }); */
-  console.log(ent.decode(body));
+  // sets up variables passed in through the request, specifically the magic link used in the email template
   var context = {
     magic_link: ent.decode(body),
   };
@@ -77,9 +56,9 @@ exports.send_email = (req, res, err) => {
       const error = `An error has occured while using the template render function: ${template_err}`;
       logger.error(error);
     }
-    // add html to email object
+    // add 'email_template.html' html to email object
     email.html = html;
-    console.log(html);
+
     // Send email
     mailer.sendMail(email, (mailer_err, sendGridRes) => {
       if (mailer_err || !sendGridRes || sendGridRes.message !== 'success') {
