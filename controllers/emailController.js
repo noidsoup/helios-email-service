@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 const EmailTemplates = require('swig-email-templates');
-const sgTransport = require('nodemailer-sendgrid-transport');
+const sgTransport = require('nodemailer-sendgrid-transport-categories');
 const logger = require('../utils/logger');
 const ent = require('ent');
 const encode = require('ent/encode');
@@ -12,7 +12,7 @@ require('../services/cache');
 const options = {
   auth: {
     api_key: process.env.SENDGRID_API_KEY,
-  }
+  },
 };
 
 const templates = new EmailTemplates({root: './'});
@@ -26,6 +26,7 @@ exports.send_email = (req, res, err) => {
 
   const { to, from, subject, body } = req.body
   const email = {
+    categories: ['Content Portal'],
     to,
     from,
     subject,
@@ -91,12 +92,10 @@ exports.get_emails = async (req, res) => {
   if (!emails) {
     const error = Error(`Error retrieving emails from MongoDB.`);
     logger.error(error);
-    console.log(error);
     res.status(500).json({ message: error});
   }
     // Successful, so send data
     logger.info(`Retrieving array of emails with length of ${emails.length}`);
-    console.log(emails);
     res.status(200).json({ emails });
 };
 
