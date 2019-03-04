@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 const EmailTemplates = require('swig-email-templates');
-const sgTransport = require('nodemailer-sendgrid-transport');
+const sgTransport = require('nodemailer-sendgrid-transport-categories');
 const logger = require('../utils/logger');
 const ent = require('ent');
 const encode = require('ent/encode');
@@ -15,7 +15,12 @@ const options = {
   }
 };
 
-const templates = new EmailTemplates({root: './'});
+const templates = new EmailTemplates({root: './',   juice: {
+    webResources: {
+      images: false // don't inline images, gmail won't like it.
+    }
+  },
+});
 const mailer = nodemailer.createTransport(sgTransport(options));
 
 exports.send_email = (req, res, err) => {
@@ -31,6 +36,7 @@ exports.send_email = (req, res, err) => {
     subject,
     body,
     sent: false,
+    categories: ['Content Portal'],
   };
 
   const savedEmail = new Email(email);
@@ -58,6 +64,8 @@ exports.send_email = (req, res, err) => {
     }
     // add 'email_template.html' html to email object
     email.html = html;
+
+    console.log(html);
 
     // Send email
     mailer.sendMail(email, (mailer_err, sendGridRes) => {
