@@ -38,7 +38,12 @@
         <tbody>
         <tr>
             <td align="center" valign="top">
+              {% if type == 'exhibitor' %}
                 <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Exciting news: your content is ready to view!</p>
+              {% endif %}
+              {% if type == 'attendee' %}
+                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Welcome to your Content Portal!</p>
+              {% endif %}
             </td>
         </tr>
         </tbody>
@@ -59,8 +64,13 @@
             align="center"
             valign="top"
           >
-            <br /><br />
+          <br /><br />
+              {% if type == 'exhibitor' %}
               <p style="font-family: Arial; font-size: 17px; text-align: left;">All of your saved content is now in your portal. Scan more QR codes to save more content!</p>
+              {% endif %}
+              {% if type == 'attendee' %}
+              <p style="font-family: Arial; font-size: 17px; text-align: left;">Please visit your portal to start uploading content.</p>
+              {% endif %}
               <p style="font-family: Arial; font-size: 17px; text-align: left;">Note: save this email to make sure your link doesn't get lost.</p>
           </td>
         </tr>
@@ -72,9 +82,7 @@
             valign="top"
           >
             <a href="{{magic_link}}"
-            >
-            <img src="https://s3-us-west-2.amazonaws.com/reachdata/btn_VisitMyPortal.png" />
-            </a>
+            ><img src="https://s3-us-west-2.amazonaws.com/reachdata/btn_VisitMyPortal.png" /></a>
             <br>
             <br>
           </td>

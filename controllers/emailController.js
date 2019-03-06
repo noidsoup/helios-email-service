@@ -29,7 +29,7 @@ exports.send_email = (req, res, err) => {
     throw err;
   };
 
-  const { to, from, subject, body } = req.body
+  const { to, from, subject, body, type } = req.body
   const email = {
     to,
     from,
@@ -37,6 +37,7 @@ exports.send_email = (req, res, err) => {
     body,
     sent: false,
     categories: ['Content Portal'],
+    type
   };
 
   const savedEmail = new Email(email);
@@ -55,6 +56,7 @@ exports.send_email = (req, res, err) => {
   // sets up variables passed in through the request, specifically the magic link used in the email template
   var context = {
     magic_link: ent.decode(body),
+    type: type,
   };
 
   templates.render('email_template.html', context, function(template_err, html) {
@@ -64,8 +66,6 @@ exports.send_email = (req, res, err) => {
     }
     // add 'email_template.html' html to email object
     email.html = html;
-
-    console.log(html);
 
     // Send email
     mailer.sendMail(email, (mailer_err, sendGridRes) => {
