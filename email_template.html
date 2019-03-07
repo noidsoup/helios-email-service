@@ -39,7 +39,12 @@
         <tbody>
         <tr>
             <td align="center" valign="top">
+              {% if type == 'exhibitor' %}
                 <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Exciting news: your content is ready to view!</p>
+              {% endif %}
+              {% if type == 'attendee' %}
+                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Welcome to your Content Portal!</p>
+              {% endif %}
             </td>
         </tr>
         </tbody>
@@ -60,8 +65,13 @@
             align="center"
             valign="top"
           >
-            <br /><br />
+          <br /><br />
+              {% if type == 'exhibitor' %}
               <p style="font-family: Arial; font-size: 17px; text-align: left;">All of your saved content is now in your portal. Scan more QR codes to save more content!</p>
+              {% endif %}
+              {% if type == 'attendee' %}
+              <p style="font-family: Arial; font-size: 17px; text-align: left;">Please visit your portal to start uploading content.</p>
+              {% endif %}
               <p style="font-family: Arial; font-size: 17px; text-align: left;">Note: save this email to make sure your link doesn't get lost.</p>
           </td>
         </tr>
@@ -73,7 +83,11 @@
             valign="top"
           >
             <a href="{{magic_link}}"
+<<<<<<< HEAD
             ><img src="https://s3-us-west-2.amazonaws.com/reachdata/manager/3zg9a51551292029041.png" data-inline-ignore /></a>
+=======
+            ><img src="https://s3-us-west-2.amazonaws.com/reachdata/btn_VisitMyPortal.png" /></a>
+>>>>>>> 3135f15fc7145af15b569c2d539864ccc3fd1008
             <br>
             <br>
           </td>
@@ -100,7 +114,7 @@
               style="font-family: Arial, sans-serif; font-size: 14px; color: white; letter-spacing: 0.7px; word-wrap: break-word; text-align: center;"
             >
             Having trouble?
-              <a style="color: white;" href="www.google.com"
+              <a style="color: white;" href=""
                 >Contact support.</a
               >
             </p>

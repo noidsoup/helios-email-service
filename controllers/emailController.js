@@ -15,7 +15,12 @@ const options = {
   },
 };
 
-const templates = new EmailTemplates({root: './'});
+const templates = new EmailTemplates({root: './',   juice: {
+    webResources: {
+      images: false // don't inline images, gmail won't like it.
+    }
+  },
+});
 const mailer = nodemailer.createTransport(sgTransport(options));
 
 exports.send_email = (req, res, err) => {
@@ -24,7 +29,7 @@ exports.send_email = (req, res, err) => {
     throw err;
   };
 
-  const { to, from, subject, body } = req.body
+  const { to, from, subject, body, type } = req.body
   const email = {
     categories: ['Content Portal'],
     to,
@@ -32,6 +37,8 @@ exports.send_email = (req, res, err) => {
     subject,
     body,
     sent: false,
+    categories: ['Content Portal'],
+    type
   };
 
   const savedEmail = new Email(email);
@@ -50,6 +57,7 @@ exports.send_email = (req, res, err) => {
   // sets up variables passed in through the request, specifically the magic link used in the email template
   var context = {
     magic_link: ent.decode(body),
+    type: type,
   };
 
   templates.render('email_template.html', context, function(template_err, html) {

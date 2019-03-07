@@ -65,8 +65,6 @@ db.on("connected", () => {
   logger.info(`using ${db.name}`);
 });
 
-console.log('23422----');
-
 app.use(router);
 // protect routes
 app.use("/api", jwtVerify, api);
