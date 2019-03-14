@@ -40,10 +40,10 @@
         <tr>
             <td align="center" valign="top">
               {% if type == 'exhibitor' %}
-                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Exciting news: your content is ready to view!</p>
+                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Welcome to your Content Portal!</p>
               {% endif %}
               {% if type == 'attendee' %}
-                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Welcome to your Content Portal!</p>
+                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Exciting news: your content is ready to view!</p>
               {% endif %}
             </td>
         </tr>
@@ -83,16 +83,8 @@
             valign="top"
           >
             <a href="{{magic_link}}"
-<<<<<<< HEAD
-<<<<<<< HEAD
-            ><img src="https://s3-us-west-2.amazonaws.com/reachdata/manager/3zg9a51551292029041.png" data-inline-ignore /></a>
-=======
-            ><img src="https://s3-us-west-2.amazonaws.com/reachdata/btn_VisitMyPortal.png" /></a>
->>>>>>> 3135f15fc7145af15b569c2d539864ccc3fd1008
-=======
               style="font-family: Arial; background: #0066b3; color: white; text-decoration: none; padding: 15px 45px 15px 45px; border-radius: 5px;"
             >Visit my portal</a>
->>>>>>> 4553138bbec0ebd977e65479fe9236347d0fb3ba
             <br>
             <br>
           </td>
@@ -119,9 +111,12 @@
               style="font-family: Arial, sans-serif; font-size: 14px; color: white; letter-spacing: 0.7px; word-wrap: break-word; text-align: center;"
             >
             Having trouble?
-              <a style="color: white;" href=""
-                >Contact support.</a
-              >
+              {% if type == 'exhibitor' %}
+              +1(855) 403-2456
+              {% endif %}
+              {% if type == 'attendee' %}
+              <a style="color: white;" href="https://heliosinteractive1.typeform.com/to/PNt9e9">Contact support.</a>
+              {% endif %}
             </p>
           </td>
         </tr>
