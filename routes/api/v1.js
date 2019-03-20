@@ -47,7 +47,7 @@ router.post('/v1/emails/', [
     .not().isEmpty().withMessage('from field is empty')
     .trim()
     .escape()
-    .matches(/\b(?:heliosinteractive|freeman)\b/),
+    .matches(/\b(?:heliosinteractive|freemancontentportal)\b/),
   check("subject")
     .isString().withMessage('subject field is not a string')
     .isLength({ max: 78 }).withMessage('subject has a max length of 78 characters')
