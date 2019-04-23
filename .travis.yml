@@ -14,7 +14,7 @@ deploy:
   region: us-west-1
   app: "helios-email"
   skip_cleanup: true
-  env: "HeliosEmail-env"
+  env: "stagin-HeliosEmail-env-1"
   bucket_name: "elasticbeanstalk-us-west-1-154847616911"
   bucket_path: "helios-email-service"
   on:
