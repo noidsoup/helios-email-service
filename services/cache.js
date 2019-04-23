@@ -11,16 +11,12 @@
     }
     The hashKey is OPTIONAL and passed in by any funtion calling .cache()
     Example: .cache({ key: req.user._id});
-
 */
-require('dotenv').config()
 const mongoose = require("mongoose");
 const redis = require("redis");
 const util = require("util");
-
 const redis_host = process.env.REDIS_CLIENT_URL || 'localhost';
 
-console.log('-----------process.env.REDIS_CLIENT_URL---------------', redis_host);
 const client = redis.createClient({ host: redis_host });
 client.hget = util.promisify(client.hget); // Turns the redis get() into a promise.
 
@@ -48,7 +44,7 @@ mongoose.Query.prototype.exec = async function(...args) {
   const redisKey = JSON.stringify({ ...{}, query, collection }); // Combines query and collection to form a unique key.
   // Check to see if the exact query has been executed in redis.
   const cacheValue = await client.hget(this.hashKey, redisKey);
-  
+
   // if yes, convert the cache value to json, then mogoose object, and return the result right away.
   if (cacheValue) {
     const doc = JSON.parse(cacheValue);

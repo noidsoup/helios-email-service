@@ -8,6 +8,8 @@ const EmailSchema = new Schema(
     from: { type: String, required: true },
     subject: { type: String, required: true, maxlength: 78 },
     body: { type: String, required: true },
+    magiclink: { type: String, required: false },
+    type: { type: String, required: false },
     sent: { type: String, required: true },
   }
 );
