@@ -1,5 +1,19 @@
 require("dotenv").config(); // loads evnironment variables defined in .env
 
+const fs = require('fs')
+
+const path = '../.env';
+
+fs.access(path, fs.F_OK, (err) => {
+  if (err) {
+    console.error(err)
+    return
+  }
+
+  //file exists
+  console.log('file exists');
+})
+
 // / DEVELOPMENT ///
 const dev = {
   app: {
