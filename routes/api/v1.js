@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 * */
 router.get("/v1", (req, res) => {
   res.send(
-    "EMAIL API Version 1.0.0. STAGING"
+    "EMAIL API Version 1.0.0."
   );
 });
 
