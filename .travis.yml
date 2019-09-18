@@ -11,12 +11,12 @@ before_install:
   - docker push neymann/helios-email-service
 deploy:
   provider: elasticbeanstalk
-  region: us-west-1
-  app: "helios-email"
+  region: us-west-2
+  app: "helios-email-service"
   skip_cleanup: false
-  env: "HeliosEmail-env"
-  bucket_name: "elasticbeanstalk-us-west-1-154847616911"
-  bucket_path: "helios-email-service"
+  env: "HeliosEmailService-env"
+  bucket_name: "helios-email-service"
+  bucket_path: "server"
   on:
     branch: master
   access_key_id: "$AWS_ACCESS_KEY"
