@@ -15,8 +15,8 @@ deploy:
   app: "helios-email-service"
   skip_cleanup: false
   env: "HeliosEmailService-env"
-  bucket_name: "helios-email-service"
-  bucket_path: "server"
+  bucket_name: "elasticbeanstalk-us-west-2-154847616911"
+  bucket_path: "helios-email-service"
   on:
     branch: master
   access_key_id: "$AWS_ACCESS_KEY"
