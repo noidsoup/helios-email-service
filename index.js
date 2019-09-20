@@ -62,7 +62,7 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false }, (e
 const db = mongoose.connection;
 
 db.on("connected", () => {
-  console.log('connected to mongo database');
+  console.log('connected to mongo database', mongoDB);
 });
 
 db.on("error", () => {
