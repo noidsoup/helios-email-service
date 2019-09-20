@@ -7,7 +7,7 @@ const encode = require('ent/encode');
 const decode = require('ent/decode');
 
 const Email = require("../models/email");
-require('../services/cache');
+// require('../services/cache');
 const options = {
   auth: {
     api_key: process.env.SENDGRID_API_KEY,
@@ -115,7 +115,7 @@ exports.get_single_email = async (req, res) => {
   const id = req.params.id;
   const emailDetail = await Email.findOne({
     _id: id
-  }).cache();
+  });
   if (!emailDetail) {
     const error = Error(`Error retrieving emails from MongoDB.`);
     logger.error(error);

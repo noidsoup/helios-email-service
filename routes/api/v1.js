@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { check, checkSchema, validationResult } = require("express-validator/check");
-const { cleanCache } = require('../../middlewares/cleanCache');
+// const { cleanCache } = require('../../middlewares/cleanCache');
 
 /* Main routing engine.
 * Takes all requests before forwarding to the approriate controller.
@@ -59,7 +59,7 @@ router.post('/v1/emails/', [
     .not().isEmpty().withMessage('body field is empty')
     .trim()
     .escape(),
-], cleanCache, (req, res) => {
+], (req, res) => {
   // Finds the validation errors in this request and wraps them in an object with handy functions
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
