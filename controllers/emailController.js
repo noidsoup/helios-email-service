@@ -7,7 +7,7 @@ const encode = require('ent/encode');
 const decode = require('ent/decode');
 
 const Email = require("../models/email");
-// require('../services/cache');
+
 const options = {
   auth: {
     api_key: process.env.SENDGRID_API_KEY,

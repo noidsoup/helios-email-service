@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { check, checkSchema, validationResult } = require("express-validator/check");
-// const { cleanCache } = require('../../middlewares/cleanCache');
+const { check, validationResult } = require("express-validator/check");
 
 /* Main routing engine.
 * Takes all requests before forwarding to the approriate controller.
@@ -22,7 +21,7 @@ router.get("/", (req, res) => {
 * */
 router.get("/v1", (req, res) => {
   res.send(
-    "EMAIL API Version 1.0.0. test"
+    "EMAIL API Version 1.5.0"
   );
 });
 

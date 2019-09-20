@@ -1,6 +1,5 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-// const config = require("./config");
 const express = require("express");
 const bodyParser = require('body-parser');
 const logger = require('./utils/logger');
@@ -9,8 +8,6 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.status(200).json("Email API");
 });
-
-// helios-email-service.hs5z1e.0001.usw1.cache.amazonaws.com
 
 const api = require("./routes/api/v1");
 
@@ -64,13 +61,12 @@ mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false }, (e
 const db = mongoose.connection;
 
 db.on("connected", () => {
-  console.log('connected to mongo database', mongoDB);
+  console.log('connected to mongo database');
 });
 
 db.on("error", () => {
   console.log('failed to connect');
 });
-
 
 app.use(router);
 // protect routes
