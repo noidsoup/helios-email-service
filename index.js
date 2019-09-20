@@ -49,21 +49,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // set up mongoose connection
 const mongoose = require("mongoose");
-const {
-  db: { host, port, name },
-} = config.prod;
 
-const mongoDB = process.env.MONGODB_URI || `mongodb://${host}:${port}/${name}`;
+const mongoDB = process.env.MONGODB_URI;
 mongoose.Promise = global.Promise;
-mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false }, function(err) {
-    if (err)
-      logger.error(err);
+mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false }, (err,) => {
+  if (err) {
+    console.log(err);
+    logger.error(err);
+  }
 });
 
 const db = mongoose.connection;
+
 db.on("connected", () => {
-  logger.info(`using ${db.name}`);
+  console.log('connected to mongo database');
 });
+
+db.on("error", () => {
+  console.log('failed to connect');
+});
+
 
 app.use(router);
 // protect routes

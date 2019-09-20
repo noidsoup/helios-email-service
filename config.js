@@ -1,4 +1,4 @@
-require("dotenv").config(); // loads evnironment variables defined in .env
+/* require("dotenv").config(); // loads evnironment variables defined in .env
 
 // / DEVELOPMENT ///
 const dev = {
@@ -46,4 +46,4 @@ const config = {
   prod,
 };
 
-module.exports = config;
+module.exports = config; */
