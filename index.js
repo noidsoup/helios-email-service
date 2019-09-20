@@ -10,6 +10,8 @@ router.get("/", (req, res) => {
   res.status(200).json("Email API");
 });
 
+// helios-email-service.hs5z1e.0001.usw1.cache.amazonaws.com
+
 const api = require("./routes/api/v1");
 
 function jwtVerify (req, res, next) {
