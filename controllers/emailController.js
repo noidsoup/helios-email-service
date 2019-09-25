@@ -36,7 +36,6 @@ exports.send_email = (req, res, err) => {
     subject,
     body,
     sent: false,
-    categories: ['Content Portal'],
     type
   };
 
