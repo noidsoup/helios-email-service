@@ -7,21 +7,21 @@
   <body style="background-color: #A5ACB0;">
     <!-- header -->
     <table
-      style="margin-top: 0px; padding-top: 0px; background: #0066b3;"
+      style="margin-top: 0px; padding-top: 0px; background:#fff;"
       border="0"
       width="600"
+      height="79"
       cellspacing="0"
-      cellpadding="0"
       align="center"
     >
       <tbody>
         <tr>
-          <td align="center" valign="top">
+          <td align="center" valign="center">
             <img
-              src="https://s3-us-west-2.amazonaws.com/reachdata/manager/wi9ui81551291990044.png"
+              src="https://content-portal-production.s3-us-west-1.amazonaws.com/email-service-template-assets/Gartner_logo_RGB.png"
               alt="free logo"
               align="center"
-              height="68"
+              height="25"
               data-inline-ignore
             />
           </td>
@@ -37,18 +37,41 @@
         align="center"
     >
         <tbody>
-        <tr>
-            <td align="center" valign="top">
+        <tr style="background: #002856;">
+            <td align="center" valign="center">
               {% if type == 'exhibitor' %}
-                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Welcome to your Content Portal!</p>
+                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #FFF;">Welcome to your Content Portal!</p>
               {% endif %}
               {% if type == 'attendee' %}
-                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #2F2D2E; margin-top: 39px;">Exciting news: your content is ready to view!</p>
+                <p style="text-align: center; font-family: Arial; font-size: 19px; font-weight: 600; color: #FFF;">Your content is ready to view!</p>
               {% endif %}
             </td>
         </tr>
         </tbody>
     </table>
+    <!-- Check Mark -->
+    <table
+        style="margin-top: 0px; padding-top: 0px; background:#fff;"
+        border="0"
+        width="600"
+        cellspacing="0"
+        cellpadding="30"
+        align="center"
+      >
+      <tbody>
+          <tr>
+            <td align="center" valign="center">
+              <img
+                src="https://content-portal-production.s3-us-west-1.amazonaws.com/email-service-template-assets/icon_checkmark.png"
+                alt="free logo"
+                align="center"
+                height="78"
+                data-inline-ignore
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     <!-- inner body -->
     <table
       style="background: #FFFFFF;"
@@ -65,13 +88,12 @@
             align="center"
             valign="top"
           >
-          <br /><br />
               {% if type == 'exhibitor' %}
-              <p style="font-family: Arial; font-size: 17px; text-align: left;">Please visit your portal to start uploading content.</p>
+              <p style="color: #000; font-family: Arial; font-size: 17px; text-align: left; margin-top: 0;">Please visit your portal to start uploading content.</p>
               {% endif %}
               {% if type == 'attendee' %}
-              <p style="font-family: Arial; font-size: 17px; text-align: left;">All of your saved content is now in your portal. Scan more QR codes to save more content!</p>
-              <p style="font-family: Arial; font-size: 17px; text-align: left;">Note: save this email to make sure your link doesn't get lost.</p>
+              <p style="color: #000; font-family: Arial; font-size: 17px; text-align: left; margin-top: 0;">All of your saved content is now in your portal. Scan more QR codes to save more content!</p>
+              <p style="color: #000; font-family: Arial; font-size: 17px; text-align: left;"><b>Note:</b> Save this email to make sure your link doesn’t get lost.</p>
               {% endif %}
           </td>
         </tr>
@@ -83,7 +105,7 @@
             valign="top"
           >
             <a href="{{magic_link}}"
-              style="font-family: Arial; background: #0066b3; color: white; text-decoration: none; padding: 15px 45px 15px 45px; border-radius: 5px;"
+              style="font-size: 19px; font-family: Arial; background: #002856; color: white; text-decoration: none; padding: 15px 45px 15px 45px; border-radius: 5px;"
             >Visit my portal</a>
             <br>
             <br>
@@ -93,7 +115,7 @@
     </table>
     <!-- footer -->
     <table
-      style="background: #0066b3;"
+      style="background: #FFF;"
       border="0"
       width="600"
       cellspacing="0"
@@ -108,14 +130,13 @@
             valign="center"
           >
             <p
-              style="font-family: Arial, sans-serif; font-size: 14px; color: white; letter-spacing: 0.7px; word-wrap: break-word; text-align: center;"
+              style="font-family: Arial, sans-serif; font-size: 17px; color: white; letter-spacing: 0.7px; word-wrap: break-word; text-align: center;"
             >
-            Having trouble?
               {% if type == 'exhibitor' %}
               <a style="color: white;">+1 (855) 403-2456</a>
               {% endif %}
               {% if type == 'attendee' %}
-              <a style="color: white;" href="https://heliosinteractive1.typeform.com/to/PNt9e9">Contact support.</a>
+              <a style="color: #002856; text-decoration: none" href="https://heliosinteractive1.typeform.com/to/PNt9e9">Need Help?</a>
               {% endif %}
             </p>
           </td>
