@@ -3,8 +3,6 @@ const EmailTemplates = require('swig-email-templates');
 const sgTransport = require('nodemailer-sendgrid-transport-categories');
 const logger = require('../utils/logger');
 const ent = require('ent');
-const encode = require('ent/encode');
-const decode = require('ent/decode');
 
 const Email = require("../models/email");
 
@@ -16,7 +14,7 @@ const options = {
 
 const templates = new EmailTemplates({root: './',   juice: {
     webResources: {
-      images: false // don't inline images, gmail won't like it.
+      images: false // don't inline images, gmail does not like it.
     }
   },
 });
@@ -100,7 +98,6 @@ exports.get_emails = async (req, res) => {
     logger.error(error);
     res.status(500).json({ message: error});
   }
-    // Successful, so send data
     logger.info(`Retrieving array of emails with length of ${emails.length}`);
     res.status(200).json({ emails });
 };
@@ -120,13 +117,12 @@ exports.get_single_email = async (req, res) => {
     logger.error(error);
     res.status(500).json({ message: error});
   }
-    // Successful, so send data
     logger.info(`Retrieving email with ID of ${id}`);
     res.status(200).json({ emailDetail });
 
 };
 
-// Handle request for EMAILS by a given email address
+// Handle request for emails by a given email address
 exports.get_user_emails = async (req, res) => {
   if (!req.params.email) {
     res.status(500).json({ message: "No email supplied in request." });

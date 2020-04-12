@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 
 const api = require("./routes/api/v1");
 
-function jwtVerify (req, res, next) {
+const jwtVerify = (req, res, next) => {
     logger.info('verifying token...');
 
     // check header or url parameters or post parameters for token
@@ -69,7 +69,9 @@ db.on("error", () => {
 });
 
 app.use(router);
+
 // protect routes
 app.use("/api", jwtVerify, api);
+
 logger.info('SERVER_PORT', process.env.SERVER_PORT);
 app.listen(process.env.SERVER_PORT, () => logger.info(`email service listening on port ${process.env.SERVER_PORT}!`))
