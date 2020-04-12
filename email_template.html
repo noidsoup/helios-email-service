@@ -242,83 +242,13 @@
     <!-- Email Body : BEGIN -->
     <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="375"
       style="margin: auto;" class="email-container">
-      <!-- Email Header : BEGIN -->
-      <tr>
-        <td style="padding: 20px 0; text-align: center; background-color: #ffffff;">
-          <img
-            src="https://content-portal-production.s3-us-west-1.amazonaws.com/email-service-template-assets/Gartner_logo_RGB.png"
-            width="107" height="25" alt="gartner_logo" border="0"
-            style="height: auto; background: #fff; font-family: sans-serif; font-size: 15px; line-height: 15px;">
-        </td>
-      </tr>
-      <!-- Email Header : END -->
-
-      <!-- Hero Image, Flush : BEGIN -->
-      <tr>
-        <td
-          style="background-color: #002856; padding: 20px; font-family: Arial; font-weight: 700; font-size: 17px; line-height: 23px; color: #fff; text-align: center">
-          <p style="margin: 0">Your content is ready to view!</p>
-        </td>
-      </tr>
-      <!-- Hero Image, Flush : END -->
-
-      <!-- 1 Column Text + Button : BEGIN -->
       <tr>
         <td style="background-color: #ffffff;">
           <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-            <!-- Checkmark logo : BEGIN -->
             <tr>
-              <td style="padding: 31px 0; text-align: center; background-color: #ffffff;">
-                <img
-                  src="https://content-portal-production.s3-us-west-1.amazonaws.com/email-service-template-assets/icon_checkmark.png">
-              </td>
-            </tr>
-            <!-- Checkmark logo : END -->
-            <tr>
-              {% if type == 'attendee' %}
               <td
                 style="text-align: center; padding: 0 34px 100px 34px; font-family: Arial; font-size: 18px; line-height: 23px; color: #000000;">
-                <p style="margin: 0 0 30px;">All of your saved content is now in your portal. Scan more QR codes to save
-                  more content!</p>
-                <p style="margin: 0 0 10px;"><span style="font-weight: bold">Note: </span>Save this email to make sure
-                  your link doesn’t get lost.
-                </p>
-              </td>
-              {% endif %}
-              {% if type == 'exhibitor' %}
-              <td
-                style="text-align: center; padding: 0 34px 100px 34px; font-family: Arial; font-size: 18px; line-height: 23px; color: #000000;">
-                <p style="margin: 0 0 30px;">Please visit your portal to start uploading content.</p>
-              </td>
-              {% endif %}
-            </tr>
-            <tr>
-              <td style="padding: 0 20px 20px;">
-                <!-- Button : BEGIN -->
-                <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0"
-                  style="margin: auto;">
-                  <tr>
-                    <td class="button-td button-td-primary" style="border-radius: 4px; background: #222222;">
-                      <a class="button-a button-a-primary" href="{{magic_link}}"
-                        style="background: #002856; border: 1px solid #000000; font-family: Arial; font-size: 19px; line-height: 22px; text-decoration: none; padding: 13px 48px; color: #ffffff; display: block; border-radius: 4px;">Go to my Portal</a>
-                    </td>
-                  </tr>
-                </table>
-                <!-- Button : END -->
-                <!-- HELP LINK BEGIN : BEGING -->
-                <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0"
-                  style="margin: auto;">
-                  <tr>
-                    <td class="button-td button-td-primary">
-                      <br>
-
-                      <a class="button-a button-a-primary" href="https://google.com/"
-                        style="font-family: sans-serif; font-size: 17px; line-height: 20px; text-decoration: none; padding: 13px 17px; color: #002856; display: block;">Need
-                        Help?</a>
-                    </td>
-                  </tr>
-                </table>
-                <!-- HELP LINK BEGIN : END -->
+                <p style="margin: 0 0 30px;">Hello World!</p>
               </td>
             </tr>
 
