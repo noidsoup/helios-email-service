@@ -19,7 +19,7 @@
     "express-validator": "^5.3.0",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.9.7",
-    "nodemailer": "^4.6.8",
+    "nodemailer": "^6.4.16",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemailer-sendgrid-transport-categories": "^0.2.0",
     "nodemon": "^1.18.9",
